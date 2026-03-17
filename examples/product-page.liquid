@@ -1,0 +1,52 @@
+{% comment %}
+Optimized Shopify Product Page Example
+{% endcomment %}
+
+<div class="product-page">
+
+  <div class="product-images">
+    <img src="{{ product.featured_image | img_url: '800x' }}" loading="lazy" alt="{{ product.title }}">
+  </div>
+
+  <div class="product-info">
+
+    <h1>{{ product.title }}</h1>
+
+    <p class="price">{{ product.price | money }}</p>
+
+    {% render 'trust-badges' %}
+
+    <form action="/cart/add" method="post">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+
+      <button type="submit" class="btn">
+        Add to Cart
+      </button>
+    </form>
+
+    <div id="timer"></div>
+
+  </div>
+
+</div>
+
+<style>
+.product-page {
+  display: flex;
+  gap: 40px;
+}
+
+.product-info {
+  max-width: 400px;
+}
+
+.btn {
+  background: black;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+</style>
+
+<script src="{{ 'scarcity-timer.js' | asset_url }}"></script>

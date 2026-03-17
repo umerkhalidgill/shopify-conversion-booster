@@ -1,4 +1,14 @@
 <div class="sticky-cart">
+  <button type="button" onclick="addToCart()" aria-label="Add to cart">
+    Add to Cart
+  </button>
+</div>
+
+<script>
+function addToCart() {
+  document.querySelector('form[action="/cart/add"]').submit();
+}
+</script><div class="sticky-cart">
   <button onclick="addToCart()">Add to Cart</button>
 </div>
 

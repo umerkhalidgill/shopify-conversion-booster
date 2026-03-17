@@ -1,0 +1,42 @@
+{% comment %}
+Optimized Cart Drawer
+{% endcomment %}
+
+<div id="cart-drawer" class="cart-drawer">
+
+  <h2>Your Cart</h2>
+
+  {% for item in cart.items %}
+    <div class="cart-item">
+      <p>{{ item.product.title }}</p>
+      <p>{{ item.quantity }} x {{ item.price | money }}</p>
+    </div>
+  {% endfor %}
+
+  <p class="total">Total: {{ cart.total_price | money }}</p>
+
+  <button onclick="window.location='/checkout'" class="checkout-btn">
+    Checkout
+  </button>
+
+</div>
+
+<style>
+.cart-drawer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+}
+
+.checkout-btn {
+  background: black;
+  color: white;
+  padding: 10px;
+  width: 100%;
+}
+</style>
